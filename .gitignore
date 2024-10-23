@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Banco de dados H2 ###
+casamento-api.mv.db
+casamento-api.trace.db
