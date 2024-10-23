@@ -1,12 +1,11 @@
 package br.com.fabiopereira.casamento_api.services;
 
-import java.util.List;
-
+import br.com.fabiopereira.casamento_api.models.Categoria;
+import br.com.fabiopereira.casamento_api.repositories.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.fabiopereira.casamento_api.models.Categoria;
-import br.com.fabiopereira.casamento_api.repositories.CategoriaRepository;
+import java.util.List;
 
 @Component
 public class CategoriaServiceImp implements ICategoriaService{
@@ -17,11 +16,11 @@ public class CategoriaServiceImp implements ICategoriaService{
     @Override
     public Categoria inserir(Categoria categoria) {
         try {
-            if (categoria.getNome() != null && categoria.getNome().length() > 0) {
+            if (categoria.getNome() != null && !categoria.getNome().isEmpty()) {
+                categoria.setNome(categoria.getNome().toLowerCase());
+
                 return categoriaRepository.save(categoria);
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Debug: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Debug: " + e.getMessage());
         }
@@ -31,7 +30,7 @@ public class CategoriaServiceImp implements ICategoriaService{
     @Override
     public Categoria alterar(Categoria categoria) {
         try {
-            if (categoria.getId() != null && categoria.getNome() != null && categoria.getNome().length() > 0) {
+            if (categoria.getId() != null && categoria.getNome() != null && !categoria.getNome().isEmpty()) {
                 return categoriaRepository.save(categoria);
             }
         } catch (Exception e) {
