@@ -15,6 +15,11 @@ public class ProdutoServiceImp implements IProdutoService {
     private ProdutoRepository repository;
 
     @Override
+    public Produto listar(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    @Override
     public Produto inserir(Produto produto) {
         try {
             return repository.save(produto);
@@ -47,7 +52,12 @@ public class ProdutoServiceImp implements IProdutoService {
     }
 
     @Override
-    public List<Produto> listarPorCategorias(Categoria categoria) {
-        return repository.findAllByCategoria(categoria);
+    public List<Produto> listarIndisponiveis() {
+        return repository.findAllByDisponivel(false);
+    }
+
+    @Override
+    public List<Produto> listarPorCategoria(Categoria categoria) {
+        return repository.findAllByDisponivelAndCategoria(true, categoria);
     }
 }
