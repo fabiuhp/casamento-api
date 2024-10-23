@@ -1,14 +1,15 @@
-package br.com.fabiopereira.casamento_api.services;
+package br.com.fabiopereira.casamento_api.services.implementations;
 
 import br.com.fabiopereira.casamento_api.models.Categoria;
 import br.com.fabiopereira.casamento_api.repositories.CategoriaRepository;
+import br.com.fabiopereira.casamento_api.services.intefaces.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class CategoriaServiceImp implements ICategoriaService{
+public class CategoriaServiceImp implements ICategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;

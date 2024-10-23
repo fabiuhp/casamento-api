@@ -1,7 +1,8 @@
-package br.com.fabiopereira.casamento_api.services;
+package br.com.fabiopereira.casamento_api.services.intefaces;
+
+import br.com.fabiopereira.casamento_api.models.Categoria;
 
 import java.util.List;
-import br.com.fabiopereira.casamento_api.models.Categoria;
 
 public interface ICategoriaService {
     Categoria inserir(Categoria categoria);

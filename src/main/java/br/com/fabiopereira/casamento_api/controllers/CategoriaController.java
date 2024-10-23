@@ -1,7 +1,7 @@
 package br.com.fabiopereira.casamento_api.controllers;
 
 import br.com.fabiopereira.casamento_api.models.Categoria;
-import br.com.fabiopereira.casamento_api.services.ICategoriaService;
+import br.com.fabiopereira.casamento_api.services.intefaces.ICategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
