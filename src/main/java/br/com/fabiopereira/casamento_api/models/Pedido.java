@@ -1,5 +1,6 @@
 package br.com.fabiopereira.casamento_api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,5 +30,6 @@ public class Pedido {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("pedido")
     private List<ItemPedido> itensPedido;
 }

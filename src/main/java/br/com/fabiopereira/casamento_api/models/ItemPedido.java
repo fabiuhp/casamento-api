@@ -1,5 +1,6 @@
 package br.com.fabiopereira.casamento_api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @JsonIgnoreProperties("itensPedido")
     private Pedido pedido;
 
     @ManyToOne
