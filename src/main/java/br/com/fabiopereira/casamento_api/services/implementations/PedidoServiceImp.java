@@ -15,20 +15,24 @@ public class PedidoServiceImp implements IPedidoService {
     @Override
     public Pedido inserir(Pedido pedido) {
         try {
-            double total = 0.0;
-
-            for (ItemPedido itemPedido : pedido.getItensPedido()) {
-                itemPedido.setPrecoTotal(itemPedido.getPreco() * itemPedido.getQuantidadeItem());
-                itemPedido.setPreco(itemPedido.getProduto().getPreco());
-                itemPedido.setPedido(pedido);
-
-                total += itemPedido.getPrecoTotal();
-            }
-            pedido.setPrecoTotal(total);
+            atribuiPedidoAosItensPedidos(pedido);
             return repository.save(pedido);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static void atribuiPedidoAosItensPedidos(Pedido pedido) {
+        double total = 0.0;
+
+        for (ItemPedido itemPedido : pedido.getItensPedido()) {
+            itemPedido.setPrecoTotal(itemPedido.getPreco() * itemPedido.getQuantidadeItem());
+            itemPedido.setPreco(itemPedido.getProduto().getPreco());
+            itemPedido.setPedido(pedido);
+
+            total += itemPedido.getPrecoTotal();
+        }
+        pedido.setPrecoTotal(total);
     }
 }
