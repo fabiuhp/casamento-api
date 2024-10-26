@@ -2,7 +2,6 @@ package br.com.fabiopereira.casamento_api.controllers;
 
 import br.com.fabiopereira.casamento_api.models.Categoria;
 import br.com.fabiopereira.casamento_api.services.intefaces.ICategoriaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,8 +11,11 @@ import java.util.List;
 @RequestMapping("categorias")
 public class CategoriaController {
 
-    @Autowired
-    private ICategoriaService service;
+    private final ICategoriaService service;
+
+    public CategoriaController(ICategoriaService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Categoria>> listarTodas() {

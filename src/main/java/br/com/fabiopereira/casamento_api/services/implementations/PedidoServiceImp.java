@@ -23,12 +23,11 @@ public class PedidoServiceImp implements IPedidoService {
         return null;
     }
 
-    private static void atribuiPedidoAosItensPedidos(Pedido pedido) {
+    private void atribuiPedidoAosItensPedidos(Pedido pedido) {
         double total = 0.0;
 
         for (ItemPedido itemPedido : pedido.getItensPedido()) {
             itemPedido.setPrecoTotal(itemPedido.getPreco() * itemPedido.getQuantidadeItem());
-            itemPedido.setPreco(itemPedido.getProduto().getPreco());
             itemPedido.setPedido(pedido);
 
             total += itemPedido.getPrecoTotal();
